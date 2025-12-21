@@ -42,7 +42,7 @@ export default async function Home() {
       </div>
 
       <p className="text-center text-xs text-muted-foreground">
-        <a href="https://usertermed.vercel.app/donate" target="_blank" rel="noopener noreferrer" className="underline hover:text-foreground">donate</a>
+        <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/usertermed/justthenews"></img> - 
       </p>
     </main>
   );
