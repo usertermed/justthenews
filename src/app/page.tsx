@@ -42,7 +42,7 @@ export default async function Home() {
       </div>
 
       <p className="text-center text-xs text-muted-foreground">
-        <img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/usertermed/justthenews"></img> - 
+        <a href="https://github.com/usertermed/justthenews"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/usertermed/justthenews"></img></a>
       </p>
     </main>
   );
