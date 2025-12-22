@@ -14,8 +14,18 @@ import { Switch } from '@/components/ui/switch';
 import { Label } from '@/components/ui/label';
 import { useSettings } from '@/context/settings-context';
 
+import { useRouter } from 'next/navigation';
+
 export function SettingsMenu() {
     const { showCategories, setShowCategories } = useSettings();
+    const router = useRouter();
+
+    const handleToggle = (checked: boolean) => {
+        setShowCategories(checked);
+        if (!checked) {
+            router.push('/');
+        }
+    };
 
     return (
         <Dialog>
@@ -45,7 +55,7 @@ export function SettingsMenu() {
                         <Switch
                             id="show-categories"
                             checked={showCategories}
-                            onCheckedChange={setShowCategories}
+                            onCheckedChange={handleToggle}
                         />
                     </div>
                 </div>

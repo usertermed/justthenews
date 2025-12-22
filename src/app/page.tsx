@@ -1,7 +1,7 @@
 import { getTopHeadlines } from '@/lib/news';
 import { ShareButton } from '@/components/ShareButton';
 import { ModeToggle } from '@/components/mode-toggle';
-import { RefreshButton } from '@/components/RefreshButton';
+import { NavigationButtons } from '@/components/NavigationButtons';
 import { HomeButton } from '@/components/HomeButton';
 import { ReadArticleButton } from '@/components/ReadArticleButton';
 import { CategoryFilter } from '@/components/CategoryFilter';
@@ -11,7 +11,7 @@ export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
 interface HomeProps {
-  searchParams: Promise<{ category?: string }>;
+  searchParams: Promise<{ category?: string; r?: string }>;
 }
 
 export default async function Home({ searchParams }: HomeProps) {
@@ -44,7 +44,7 @@ export default async function Home({ searchParams }: HomeProps) {
           No headlines found in this category.
         </h1>
         <div className="mt-8">
-          <HomeButton />
+          <NavigationButtons currentCategory={category} />
         </div>
       </main>
     );
@@ -69,7 +69,7 @@ export default async function Home({ searchParams }: HomeProps) {
           {headline.title}
         </h1>
         <ReadArticleButton url={headline.url} />
-        <RefreshButton />
+        <NavigationButtons currentCategory={category} />
 
       </div>
 
