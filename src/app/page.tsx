@@ -74,6 +74,7 @@ export default async function Home({ searchParams }: HomeProps) {
 
       <p className="text-center text-xs text-muted-foreground">
         <a href="https://github.com/usertermed/justthenews"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/usertermed/justthenews"></img></a>
+        <img alt="Website" style={{ marginTop: '0.2rem' }} src="https://img.shields.io/website?url=https%3A%2F%2Fjustthenews.vercel.app%2Fapi%2Fv1%2Fstatus&up_message=ok&up_color=green&down_message=bad&down_color=red&label=api%20status"></img>
       </p>
 
       <div className="fixed bottom-10 right-10">
