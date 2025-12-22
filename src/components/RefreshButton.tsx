@@ -14,7 +14,7 @@ export function RefreshButton() {
     return (
         <Button variant="ghost" className="gap-2 text-muted-foreground hover:text-foreground" onClick={handleRefresh}>
             <RefreshCw className="h-4 w-4" />
-            Refresh
+            Next article
         </Button>
     );
 }
