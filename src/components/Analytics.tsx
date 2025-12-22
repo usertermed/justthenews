@@ -58,6 +58,9 @@ export function Analytics() {
                             <p className="text-sm text-muted-foreground">
                                 We use cookies to analyze our traffic. Please indicate if you accept usage of Google Analytics.
                             </p>
+                            <p className="text-sm text-muted-foreground font-bold">
+                                <a href="https://github.com/usertermed/justthenews/blob/main/COOKIES.md">Read more</a>
+                            </p>
                         </CardContent>
                         <CardFooter className="flex justify-end gap-2 pt-0">
                             <Button variant="outline" size="sm" onClick={handleDecline}>

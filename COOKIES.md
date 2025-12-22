@@ -12,7 +12,7 @@ This is completely optional and you can disable it by pressing "Decline" in the 
 
 For further information about cookies, review these materials
 
-[Google Analytics Privacy Policy](https://policies.google.com/privacy/cookies).
-[Google Partner Sites Privacy](https://policies.google.com/technologies/partner-sites)
-[Google Data Protection / GDPR Compliance](http://support.google.com/analytics/answer/6004245?sjid=5694763268481247179-NA)
-[Google Privacy Policy](https://policies.google.com/privacy)
+- [Google Analytics Privacy Policy](https://policies.google.com/privacy/cookies).
+- [Google Partner Sites Privacy](https://policies.google.com/technologies/partner-sites)
+- [Google Data Protection / GDPR Compliance](http://support.google.com/analytics/answer/6004245?sjid=5694763268481247179-NA)
+- [Google Privacy Policy](https://policies.google.com/privacy)
