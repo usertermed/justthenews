@@ -9,8 +9,26 @@ ad free, overstimulation-free, forever
 jtn has a small RESTful api (`/api/v1/`).
 
 ## v1 Endpoints
-`/api/v1/get/headline` - returns a headline
 
-expected response: 
+### `GET /api/v1/get/headline`
+Returns a random headline from the top stories.
+**Response**: JSON object containing article details.
 
-```Headline - Source```
+### `GET /api/v1/get/categories`
+Returns a list of valid news categories.
+**Response**: `{"categories": ["business", "entertainment", ...]}`
+
+### `GET /api/v1/get/headline/[category]`
+Returns a random headline from a specific category.
+**Example**: `/api/v1/get/headline/technology`
+**Response**: JSON object containing article details (or 404 if empty).
+
+### `GET /api/v1/search?q=[query]`
+Returns a random headline matching the search query.
+**Example**: `/api/v1/search?q=bitcoin`
+**Response**: JSON object containing article details (or 404 if no match).
+
+### `GET /api/v1/status`
+Returns API health status.
+**Response**: `{"status": "ok", "uptime": 123.45, ...}`
+

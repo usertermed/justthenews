@@ -20,14 +20,39 @@ interface NewsApiResponse {
   message?: string;
 }
 
-export async function getTopHeadlines(): Promise<{ articles: Article[] | null; error: string | null }> {
+export const CATEGORIES = [
+  'business',
+  'entertainment',
+  'general',
+  'health',
+  'science',
+  'sports',
+  'technology',
+] as const;
+
+export type Category = typeof CATEGORIES[number];
+
+interface GetHeadlinesOptions {
+  category?: string;
+  q?: string;
+}
+
+export async function getTopHeadlines(options?: GetHeadlinesOptions): Promise<{ articles: Article[] | null; error: string | null }> {
   const apiKey = process.env.NEWS_API_KEY;
 
   if (!apiKey || apiKey === 'YOUR_API_KEY_HERE') {
     return { articles: null, error: 'NewsAPI key is not configured. Please add NEWS_API_KEY to your environment variables.' };
   }
 
-  const url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${apiKey}`;
+  let url = `https://newsapi.org/v2/top-headlines?country=us&apiKey=${apiKey}`;
+
+  if (options?.category) {
+    url += `&category=${options.category}`;
+  }
+
+  if (options?.q) {
+    url += `&q=${encodeURIComponent(options.q)}`;
+  }
 
   try {
     const response = await fetch(url, {
@@ -37,13 +62,13 @@ export async function getTopHeadlines(): Promise<{ articles: Article[] | null; e
     const data: NewsApiResponse = await response.json();
 
     if (!response.ok) {
-        const errorMessage = data.message || `An error occurred: ${response.statusText}`;
-        console.error('NewsAPI Error:', errorMessage);
-        return { articles: null, error: `Failed to fetch headlines. ${errorMessage}` };
+      const errorMessage = data.message || `An error occurred: ${response.statusText}`;
+      console.error('NewsAPI Error:', errorMessage);
+      return { articles: null, error: `Failed to fetch headlines. ${errorMessage}` };
     }
-    
+
     if (data.status !== 'ok') {
-        return { articles: null, error: data.message || 'An unknown API error occurred.' };
+      return { articles: null, error: data.message || 'An unknown API error occurred.' };
     }
 
     // Filter out articles that don't have a title
