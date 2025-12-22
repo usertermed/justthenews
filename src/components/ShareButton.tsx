@@ -69,11 +69,12 @@ export function ShareButton({ title, source }: ShareButtonProps) {
             <PopoverTrigger asChild>
                 <Button variant="outline" size="icon" className="rounded-full shadow-md">
                     <Share2 className="h-4 w-4" />
-                    <span className="sr-only">Share</span>
+                    <span className="sr-only">Share this</span>
                 </Button>
             </PopoverTrigger>
             <PopoverContent align="center" side="top" className="w-auto p-2">
                 <div className="flex items-center gap-2">
+                    <span>Share this headline</span>
                     <Button
                         variant="ghost"
                         size="icon"
