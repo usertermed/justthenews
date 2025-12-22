@@ -9,7 +9,7 @@ ad free, overstimulation-free, forever
 jtn has a small RESTful api (`/api/v1/`).
 
 ## v1 Endpoints
-`/api/v1/headline` - returns a headline
+`/api/v1/get/headline` - returns a headline
 
 expected response: 
 
