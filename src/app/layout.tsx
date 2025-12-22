@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { ThemeProvider } from "@/components/theme-provider"
+import { Analytics } from "@/components/Analytics"
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -27,6 +28,7 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           {children}
+          <Analytics />
         </ThemeProvider>
       </body>
     </html>
