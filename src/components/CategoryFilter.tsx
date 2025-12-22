@@ -5,6 +5,7 @@ import Link from 'next/link';
 import { cn } from '@/lib/utils';
 import { CATEGORIES } from '@/lib/news';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useSettings } from '@/context/settings-context';
 
 interface CategoryFilterProps {
     currentCategory?: string;
@@ -12,6 +13,7 @@ interface CategoryFilterProps {
 
 export function CategoryFilter({ currentCategory }: CategoryFilterProps) {
     const [isOpen, setIsOpen] = useState(false);
+    const { showCategories } = useSettings();
 
     // Helper to check if a category is active
     const isActive = (category: string | undefined) => {
@@ -26,6 +28,8 @@ export function CategoryFilter({ currentCategory }: CategoryFilterProps) {
         e.preventDefault();
         setIsOpen(!isOpen);
     };
+
+    if (!showCategories) return null;
 
     return (
         <div className="flex flex-wrap justify-center gap-2 max-w-2xl px-4 min-h-[40px]">

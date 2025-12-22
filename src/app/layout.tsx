@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import { ThemeProvider } from "@/components/theme-provider"
 import { Analytics } from "@/components/Analytics"
+import { SettingsProvider } from "@/context/settings-context"
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -27,8 +28,10 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
-          {children}
-          <Analytics />
+          <SettingsProvider>
+            {children}
+            <Analytics />
+          </SettingsProvider>
         </ThemeProvider>
       </body>
     </html>

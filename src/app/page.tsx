@@ -4,6 +4,7 @@ import { ModeToggle } from '@/components/mode-toggle';
 import { RefreshButton } from '@/components/RefreshButton';
 import { ReadArticleButton } from '@/components/ReadArticleButton';
 import { CategoryFilter } from '@/components/CategoryFilter';
+import { SettingsMenu } from '@/components/SettingsMenu';
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
@@ -55,7 +56,8 @@ export default async function Home({ searchParams }: HomeProps) {
 
   return (
     <main className="flex flex-col min-h-screen bg-background p-6 sm:p-12 relative">
-      <div className="absolute top-4 right-4">
+      <div className="absolute top-4 right-4 flex gap-2">
+        <SettingsMenu />
         <ModeToggle />
       </div>
 
