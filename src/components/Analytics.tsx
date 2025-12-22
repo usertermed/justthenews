@@ -52,11 +52,11 @@ export function Analytics() {
                 <div className="fixed bottom-4 left-4 right-4 z-50 md:max-w-md">
                     <Card className="shadow-lg border-2">
                         <CardHeader className="pb-2">
-                            <CardTitle className="text-lg">Cookie Consent</CardTitle>
+                            <CardTitle className="text-lg">Did someone say cookies?</CardTitle>
                         </CardHeader>
                         <CardContent>
                             <p className="text-sm text-muted-foreground">
-                                We use cookies to analyze our traffic. Please indicate if you accept usage of Google Analytics.
+                                We use third-party cookies to analyze our traffic. Please indicate if you accept usage of cookies.
                             </p>
                             <p className="text-sm text-muted-foreground font-bold">
                                 <a href="https://github.com/usertermed/justthenews/blob/main/COOKIES.md">Read more</a>

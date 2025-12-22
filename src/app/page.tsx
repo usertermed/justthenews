@@ -3,12 +3,18 @@ import { ShareButton } from '@/components/ShareButton';
 import { ModeToggle } from '@/components/mode-toggle';
 import { RefreshButton } from '@/components/RefreshButton';
 import { ReadArticleButton } from '@/components/ReadArticleButton';
+import { CategoryFilter } from '@/components/CategoryFilter';
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
-export default async function Home() {
-  const { articles, error } = await getTopHeadlines();
+interface HomeProps {
+  searchParams: Promise<{ category?: string }>;
+}
+
+export default async function Home({ searchParams }: HomeProps) {
+  const { category } = await searchParams;
+  const { articles, error } = await getTopHeadlines({ category });
 
   if (error) {
     return (
@@ -28,25 +34,34 @@ export default async function Home() {
 
   if (!articles || articles.length === 0) {
     return (
-      <main className="flex min-h-screen items-center justify-center bg-background p-8">
+      <main className="flex min-h-screen flex-col items-center justify-center bg-background p-8">
+        <div className="mb-8">
+          <CategoryFilter currentCategory={category} />
+        </div>
         <h1 className="font-headline text-5xl font-thin text-center text-foreground">
-          API replied with no headlines. Check your network connection.
+          No headlines found in this category.
         </h1>
+        <div className="mt-8">
+          <RefreshButton />
+        </div>
       </main>
     );
   }
 
   // Pick a random headline on the server. This is safe from hydration errors.
+  // Note: Since we are forcing dynamic rendering, this will run on every request.
   const randomIndex = Math.floor(Math.random() * articles.length);
   const headline = articles[randomIndex];
 
   return (
-    <main className="flex flex-col min-h-screen bg-background p-6 sm:p-12">
+    <main className="flex flex-col min-h-screen bg-background p-6 sm:p-12 relative">
       <div className="absolute top-4 right-4">
         <ModeToggle />
       </div>
 
       <div className="flex-grow flex flex-col items-center justify-center w-full gap-8">
+        <CategoryFilter currentCategory={category} />
+
         <h1 className="font-headline text-5xl md:text-7xl lg:text-8xl font-thin text-foreground text-center leading-tight tracking-tighter">
           {headline.title}
         </h1>

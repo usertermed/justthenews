@@ -67,7 +67,7 @@ export function ReadArticleButton({ url }: ReadArticleButtonProps) {
                     </AlertDialogHeader>
                     <AlertDialogFooter>
                         <AlertDialogCancel>Cancel</AlertDialogCancel>
-                        <AlertDialogAction onClick={handleContinue}>Continue</AlertDialogAction>
+                        <AlertDialogAction onClick={handleContinue}><b>Continue</b></AlertDialogAction>
                     </AlertDialogFooter>
                 </AlertDialogContent>
             </AlertDialog>
