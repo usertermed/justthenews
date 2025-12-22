@@ -4,3 +4,11 @@
 simple headline-based news website for gathering quick information
 
 ad free, overstimulation-free, forever
+
+# API docs
+jtn has a small RESTful api (`/api/v1/`).
+
+endpoints are
+`/api/v1/headline` - returns a headline
+expected response: 
+```Headline - Source```
