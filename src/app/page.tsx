@@ -4,6 +4,9 @@ import { ModeToggle } from '@/components/mode-toggle';
 import { RefreshButton } from '@/components/RefreshButton';
 import { ReadArticleButton } from '@/components/ReadArticleButton';
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export default async function Home() {
   const { articles, error } = await getTopHeadlines();
 
