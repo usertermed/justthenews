@@ -11,4 +11,5 @@ jtn has a small RESTful api (`/api/v1/`).
 endpoints are
 `/api/v1/headline` - returns a headline
 expected response: 
+
 ```Headline - Source```
