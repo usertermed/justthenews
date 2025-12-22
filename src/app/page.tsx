@@ -2,6 +2,7 @@ import { getTopHeadlines } from '@/lib/news';
 import { ShareButton } from '@/components/ShareButton';
 import { ModeToggle } from '@/components/mode-toggle';
 import { RefreshButton } from '@/components/RefreshButton';
+import { HomeButton } from '@/components/HomeButton';
 import { ReadArticleButton } from '@/components/ReadArticleButton';
 import { CategoryFilter } from '@/components/CategoryFilter';
 import { SettingsMenu } from '@/components/SettingsMenu';
@@ -43,7 +44,7 @@ export default async function Home({ searchParams }: HomeProps) {
           No headlines found in this category.
         </h1>
         <div className="mt-8">
-          <RefreshButton />
+          <HomeButton />
         </div>
       </main>
     );
