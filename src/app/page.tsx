@@ -1,4 +1,5 @@
 import { getTopHeadlines } from '@/lib/news';
+import { ShareButton } from '@/components/ShareButton';
 
 export default async function Home() {
   const { articles, error } = await getTopHeadlines();
@@ -9,11 +10,11 @@ export default async function Home() {
         <h1 className="text-4xl font-bold text-destructive">Hello Developer!</h1>
         <p className="mt-4 max-w-2xl text-lg text-muted-foreground">{error}</p>
         {error.includes('API key') && (
-            <p className="mt-4 rounded-md bg-muted p-4 text-sm text-muted-foreground">
-                Hello! Please create a <code className="font-mono font-semibold text-foreground">.env.local</code> file in the root of your project and add your NewsAPI key like this: <br />
-                <code className="font-mono font-semibold text-foreground">NEWS_API_KEY="YOUR_KEY_HERE"</code>.
-                You can get a free key from <a href="https://newsapi.org" target="_blank" rel="noopener noreferrer" className="underline font-semibold">newsapi.org</a>.
-            </p>
+          <p className="mt-4 rounded-md bg-muted p-4 text-sm text-muted-foreground">
+            Hello! Please create a <code className="font-mono font-semibold text-foreground">.env.local</code> file in the root of your project and add your NewsAPI key like this: <br />
+            <code className="font-mono font-semibold text-foreground">NEWS_API_KEY="YOUR_KEY_HERE"</code>.
+            You can get a free key from <a href="https://newsapi.org" target="_blank" rel="noopener noreferrer" className="underline font-semibold">newsapi.org</a>.
+          </p>
         )}
       </main>
     );
@@ -28,7 +29,7 @@ export default async function Home() {
       </main>
     );
   }
-  
+
   // Pick a random headline on the server. This is safe from hydration errors.
   const randomIndex = Math.floor(Math.random() * articles.length);
   const headline = articles[randomIndex];
@@ -44,6 +45,10 @@ export default async function Home() {
       <p className="text-center text-xs text-muted-foreground">
         <a href="https://github.com/usertermed/justthenews"><img alt="GitHub last commit" src="https://img.shields.io/github/last-commit/usertermed/justthenews"></img></a>
       </p>
-    </main>
+
+      <div className="fixed bottom-10 right-10">
+        <ShareButton title={headline.title} source={headline.source.name} />
+      </div>
+    </main >
   );
 }
