@@ -50,8 +50,9 @@ export default async function Home() {
         <h1 className="font-headline text-5xl md:text-7xl lg:text-8xl font-thin text-foreground text-center leading-tight tracking-tighter">
           {headline.title}
         </h1>
-        <RefreshButton />
         <ReadArticleButton url={headline.url} />
+        <RefreshButton />
+
       </div>
 
       <p className="text-center text-xs text-muted-foreground">
