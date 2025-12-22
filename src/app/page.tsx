@@ -1,5 +1,8 @@
 import { getTopHeadlines } from '@/lib/news';
 import { ShareButton } from '@/components/ShareButton';
+import { ModeToggle } from '@/components/mode-toggle';
+import { RefreshButton } from '@/components/RefreshButton';
+import { ReadArticleButton } from '@/components/ReadArticleButton';
 
 export default async function Home() {
   const { articles, error } = await getTopHeadlines();
@@ -36,10 +39,16 @@ export default async function Home() {
 
   return (
     <main className="flex flex-col min-h-screen bg-background p-6 sm:p-12">
-      <div className="flex-grow flex items-center justify-center w-full">
-        <h1 className="font-headline text-5xl md:text-7xl lg:text-8xl font-thin text-black text-center leading-tight tracking-tighter">
+      <div className="absolute top-4 right-4">
+        <ModeToggle />
+      </div>
+
+      <div className="flex-grow flex flex-col items-center justify-center w-full gap-8">
+        <h1 className="font-headline text-5xl md:text-7xl lg:text-8xl font-thin text-foreground text-center leading-tight tracking-tighter">
           {headline.title}
         </h1>
+        <RefreshButton />
+        <ReadArticleButton url={headline.url} />
       </div>
 
       <p className="text-center text-xs text-muted-foreground">
