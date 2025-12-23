@@ -5,32 +5,43 @@ import React, { createContext, useContext, useState, useEffect } from 'react';
 interface SettingsContextType {
     showCategories: boolean;
     setShowCategories: (show: boolean) => void;
+    showBookmarks: boolean;
+    setShowBookmarks: (show: boolean) => void;
 }
 
 const SettingsContext = createContext<SettingsContextType | undefined>(undefined);
 
 export function SettingsProvider({ children }: { children: React.ReactNode }) {
     const [showCategories, setShowCategories] = useState(true);
-    const [isLoaded, setIsLoaded] = useState(false);
+    const [showBookmarks, setShowBookmarks] = useState(true);
 
     useEffect(() => {
-        const stored = localStorage.getItem('settings_show_categories');
-        if (stored !== null) {
-            setShowCategories(JSON.parse(stored));
+        const savedCategories = localStorage.getItem('jtn-settings-showCategories');
+        if (savedCategories !== null) {
+            setShowCategories(JSON.parse(savedCategories));
         }
-        setIsLoaded(true);
+
+        const savedBookmarks = localStorage.getItem('jtn-settings-showBookmarks');
+        if (savedBookmarks !== null) {
+            setShowBookmarks(JSON.parse(savedBookmarks));
+        }
     }, []);
 
-    const toggleCategories = (show: boolean) => {
-        setShowCategories(show);
-        localStorage.setItem('settings_show_categories', JSON.stringify(show));
-    };
+    useEffect(() => {
+        localStorage.setItem('jtn-settings-showCategories', JSON.stringify(showCategories));
+    }, [showCategories]);
 
-    // Prevent flash of wrong content by waiting for load (optional, but good for settings)
-    // For this simple app, rendering default true then updating is fine.
+    useEffect(() => {
+        localStorage.setItem('jtn-settings-showBookmarks', JSON.stringify(showBookmarks));
+    }, [showBookmarks]);
 
     return (
-        <SettingsContext.Provider value={{ showCategories, setShowCategories: toggleCategories }}>
+        <SettingsContext.Provider value={{
+            showCategories,
+            setShowCategories,
+            showBookmarks,
+            setShowBookmarks
+        }}>
             {children}
         </SettingsContext.Provider>
     );

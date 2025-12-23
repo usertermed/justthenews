@@ -17,7 +17,7 @@ import { useSettings } from '@/context/settings-context';
 import { useRouter } from 'next/navigation';
 
 export function SettingsMenu() {
-    const { showCategories, setShowCategories } = useSettings();
+    const { showCategories, setShowCategories, showBookmarks, setShowBookmarks } = useSettings();
     const router = useRouter();
 
     const handleToggle = (checked: boolean) => {
@@ -30,7 +30,7 @@ export function SettingsMenu() {
     return (
         <Dialog>
             <DialogTrigger asChild>
-                <Button variant="ghost" size="icon">
+                <Button variant="outline" size="icon">
                     <Settings className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all" />
                     <span className="sr-only">Settings</span>
                 </Button>
@@ -46,7 +46,7 @@ export function SettingsMenu() {
                     <div className="flex items-center justify-between space-x-2">
                         <div className="flex flex-col space-y-1">
                             <Label htmlFor="show-categories" className="text-base font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70">
-                                <b>Pills</b>
+                                <span className="text-base font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"><b>Pills</b></span>
                             </Label>
                             <span className="text-sm text-muted-foreground">
                                 <b> Show category filters ("Pills") at the top of the page. If disabled, categories are hidden, and all headlines are shown.</b>
@@ -56,6 +56,19 @@ export function SettingsMenu() {
                             id="show-categories"
                             checked={showCategories}
                             onCheckedChange={handleToggle}
+                        />
+                    </div>
+                    <div className="flex items-center justify-between space-x-2">
+                        <Label htmlFor="show-bookmarks" className="flex flex-col space-y-1">
+                            <span className="text-base font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"><b>Show Bookmarks</b></span>
+                            <span className="text-sm text-muted-foreground">
+                                Enable save-for-later functionality
+                            </span>
+                        </Label>
+                        <Switch
+                            id="show-bookmarks"
+                            checked={showBookmarks}
+                            onCheckedChange={setShowBookmarks}
                         />
                     </div>
                     <div className="flex items-center justify-between space-x-2">

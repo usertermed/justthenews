@@ -2,6 +2,8 @@ import { getTopHeadlines } from '@/lib/news';
 import { ShareButton } from '@/components/ShareButton';
 import { ModeToggle } from '@/components/mode-toggle';
 import { NavigationButtons } from '@/components/NavigationButtons';
+import { BookmarkButton } from '@/components/BookmarkButton';
+import { BookmarksList } from '@/components/BookmarksList';
 import { HomeButton } from '@/components/HomeButton';
 import { ReadArticleButton } from '@/components/ReadArticleButton';
 import { CategoryFilter } from '@/components/CategoryFilter';
@@ -58,6 +60,7 @@ export default async function Home({ searchParams }: HomeProps) {
   return (
     <main className="flex flex-col min-h-screen bg-background p-6 sm:p-12 relative">
       <div className="absolute top-4 right-4 flex gap-2">
+        <BookmarksList />
         <SettingsMenu />
         <ModeToggle />
       </div>
@@ -69,7 +72,16 @@ export default async function Home({ searchParams }: HomeProps) {
           {headline.title}
         </h1>
         <ReadArticleButton url={headline.url} />
-        <NavigationButtons currentCategory={category} />
+
+        <div className="flex items-center gap-4">
+          <BookmarkButton article={{
+            title: headline.title,
+            url: headline.url,
+            source: headline.source.name,
+            publishedAt: headline.publishedAt
+          }} />
+          <NavigationButtons currentCategory={category} />
+        </div>
 
       </div>
 

@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { ThemeProvider } from "@/components/theme-provider"
 import { Analytics } from "@/components/Analytics"
 import { SettingsProvider } from "@/context/settings-context"
+import { BookmarksProvider } from "@/context/bookmarks-context"
 import { Toaster } from "@/components/ui/toaster"
 import './globals.css';
 
@@ -30,7 +31,9 @@ export default function RootLayout({
           disableTransitionOnChange
         >
           <SettingsProvider>
-            {children}
+            <BookmarksProvider>
+              {children}
+            </BookmarksProvider>
             <Analytics />
             <Toaster />
           </SettingsProvider>
