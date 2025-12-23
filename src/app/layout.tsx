@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import { ThemeProvider } from "@/components/theme-provider"
 import { Analytics } from "@/components/Analytics"
 import { SettingsProvider } from "@/context/settings-context"
+import { Toaster } from "@/components/ui/toaster"
 import './globals.css';
 
 export const metadata: Metadata = {
@@ -31,6 +32,7 @@ export default function RootLayout({
           <SettingsProvider>
             {children}
             <Analytics />
+            <Toaster />
           </SettingsProvider>
         </ThemeProvider>
       </body>

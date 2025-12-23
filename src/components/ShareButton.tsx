@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { Share2, Mail, MessageSquare, Twitter, Facebook, Copy, Check } from 'lucide-react';
+import { Share2, Mail, MessageSquare, Twitter, Facebook, Copy, Check, Slack } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
     Popover,
@@ -44,6 +44,17 @@ export function ShareButton({ title, source, url }: ShareButtonProps) {
             setTimeout(() => setCopied(false), 2000);
         } catch (err) {
             console.error('Failed to copy:', err);
+        }
+    };
+
+    const handleSlackShare = async () => {
+        try {
+            await navigator.clipboard.writeText(shareText);
+            toast({
+                description: "Copied! Paste into Slack.",
+            });
+        } catch (err) {
+            console.error('Failed to copy for Slack:', err);
         }
     };
 
@@ -113,6 +124,16 @@ export function ShareButton({ title, source, url }: ShareButtonProps) {
                     >
                         <Facebook className="h-4 w-4" />
                         <span className="sr-only">Facebook</span>
+                    </Button>
+
+                    <Button
+                        variant="ghost"
+                        size="icon"
+                        onClick={handleSlackShare}
+                        title="Slack"
+                    >
+                        <Slack className="h-4 w-4" />
+                        <span className="sr-only">Slack</span>
                     </Button>
 
                     <Button
