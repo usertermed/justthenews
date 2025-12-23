@@ -44,7 +44,7 @@ export default async function Home({ searchParams }: HomeProps) {
           No headlines found in this category. Are you lost?
         </h1>
         <div className="mt-8">
-          <NavigationButtons currentCategory={category} />
+          <HomeButton />
         </div>
       </main>
     );

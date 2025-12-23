@@ -14,7 +14,7 @@ export function HomeButton() {
     return (
         <Button variant="ghost" className="gap-2 text-muted-foreground hover:text-foreground" onClick={handleHome}>
             <Home className="h-4 w-4" />
-            Go home
+            Go to safety
         </Button>
     );
 }

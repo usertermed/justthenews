@@ -1,12 +1,11 @@
-
+'use client';
 import { HomeButton } from '@/components/HomeButton';
 
 export const dynamic = 'force-dynamic';
 export const revalidate = 0;
 
 
-
-export default async function NotFound() {
+export default function Error() {
 
   return (
     <main className="flex flex-col min-h-screen bg-background p-6 sm:p-12 relative">
@@ -14,7 +13,7 @@ export default async function NotFound() {
       <div className="flex-grow flex flex-col items-center justify-center w-full gap-8">
 
         <h1 className="font-headline text-5xl md:text-6xl lg:text-7xl font-thin text-foreground text-center leading-tight tracking-tighter">
-          404, your page hath not been found.
+          An uncaught error has occured. Check the console for more information.
         </h1>
 
       </div>

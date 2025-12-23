@@ -1,6 +1,6 @@
 'use client';
 
-import { Settings } from 'lucide-react';
+import { Settings, Bug } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import {
     Dialog,
@@ -57,6 +57,22 @@ export function SettingsMenu() {
                             checked={showCategories}
                             onCheckedChange={handleToggle}
                         />
+                    </div>
+                    <div className="flex items-center justify-between space-x-2">
+                        <div className="flex flex-col space-y-1">
+                            <Label className="text-base font-medium leading-none">
+                                <b>Report a Bug</b>
+                            </Label>
+                            <span className="text-sm text-muted-foreground">
+                                Found something broken? Let us know.
+                            </span>
+                        </div>
+                        <Button variant="outline" size="sm" asChild>
+                            <a href="https://github.com/usertermed/justthenews/issues/new?template=bug_report.md" target="_blank" rel="noopener noreferrer">
+                                <Bug className="mr-2 h-4 w-4" />
+                                Report
+                            </a>
+                        </Button>
                     </div>
                 </div>
             </DialogContent>
