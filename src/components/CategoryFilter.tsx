@@ -50,7 +50,7 @@ export function CategoryFilter({ currentCategory }: CategoryFilterProps) {
                             className={cn(
                                 "px-4 py-1.5 rounded-full text-sm font-medium transition-colors border select-none cursor-pointer block",
                                 isActive(undefined)
-                                    ? "bg-foreground text-background border-foreground"
+                                    ? "bg-foreground text-background border-foreground font-bold"
                                     : "bg-background text-muted-foreground border-border hover:border-foreground/50 hover:text-foreground"
                             )}
                         >
@@ -76,7 +76,7 @@ export function CategoryFilter({ currentCategory }: CategoryFilterProps) {
                                 className={cn(
                                     "px-4 py-1.5 rounded-full text-sm font-medium transition-colors border capitalize select-none cursor-pointer block",
                                     isActive(category)
-                                        ? "bg-foreground text-background border-foreground"
+                                        ? "bg-foreground text-background border-foreground font-bold"
                                         : "bg-background text-muted-foreground border-border hover:border-foreground/50 hover:text-foreground"
                                 )}
                             >
