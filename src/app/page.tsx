@@ -65,7 +65,7 @@ export default async function Home({ searchParams }: HomeProps) {
       <div className="flex-grow flex flex-col items-center justify-center w-full gap-8">
         <CategoryFilter currentCategory={category} />
 
-        <h1 className="font-headline text-5xl md:text-7xl lg:text-8xl font-thin text-foreground text-center leading-tight tracking-tighter">
+        <h1 className="font-headline text-5xl md:text-6xl lg:text-7xl font-thin text-foreground text-center leading-tight tracking-tighter">
           {headline.title}
         </h1>
         <ReadArticleButton url={headline.url} />
