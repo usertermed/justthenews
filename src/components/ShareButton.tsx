@@ -13,9 +13,10 @@ import { toast } from '@/hooks/use-toast';
 interface ShareButtonProps {
     title: string;
     source: string;
+    url: string;
 }
 
-export function ShareButton({ title, source }: ShareButtonProps) {
+export function ShareButton({ title, source, url }: ShareButtonProps) {
     const [copied, setCopied] = useState(false);
 
     // NewsAPI often includes the source in the title (e.g., "Headline - Source").
@@ -24,7 +25,7 @@ export function ShareButton({ title, source }: ShareButtonProps) {
         ? title.slice(0, -(` - ${source}`.length))
         : title;
 
-    const shareText = `${cleanTitle} - ${source}`;
+    const shareText = `${cleanTitle} - ${source} - ${url}`;
 
     // Note: we can't reliably get the current URL in a server component prop easily without passed headers or using a hook.
     // Assuming for now we share the text. If we want to share the URL of the site, we can use window.location.href in client.

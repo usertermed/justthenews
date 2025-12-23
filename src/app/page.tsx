@@ -41,7 +41,7 @@ export default async function Home({ searchParams }: HomeProps) {
           <CategoryFilter currentCategory={category} />
         </div>
         <h1 className="font-headline text-5xl font-thin text-center text-foreground">
-          No headlines found in this category.
+          No headlines found in this category. Are you lost?
         </h1>
         <div className="mt-8">
           <NavigationButtons currentCategory={category} />
@@ -74,7 +74,7 @@ export default async function Home({ searchParams }: HomeProps) {
       </div>
 
       <div className="fixed bottom-10 right-10">
-        <ShareButton title={headline.title} source={headline.source.name} />
+        <ShareButton title={headline.title} source={headline.source.name} url={headline.url} />
       </div>
     </main >
   );
