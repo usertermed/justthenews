@@ -46,7 +46,7 @@ export default async function Home({ searchParams }: HomeProps) {
         <div className="mt-8">
           <NavigationButtons currentCategory={category} />
         </div>
-      </main>s
+      </main>
     );
   }
 
